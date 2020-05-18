@@ -772,7 +772,7 @@ public class KotlinTestUtils {
         }
 
         DoTest wrappedTest = testCase != null ?
-                             MuteWithDatabaseKt.testWithMuteInDatabase(test, testCase) :
+                             MuteWithFileKt.testWithMuteInFile(test, testCase) :
                              MuteWithFileKt.testWithMuteInFile(test, "");
         wrappedTest.invoke(testDataFilePath);
     }

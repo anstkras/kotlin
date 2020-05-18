@@ -182,16 +182,36 @@ internal fun wrapWithMuteInDatabase(testCase: TestCase, f: () -> Unit): (() -> U
         }
     }
 
-    val doAutoMute = DO_AUTO_MUTE ?: return null
+    val mutedTest = getMutedTestOrNull(testCase)
 
-    return {
-        try {
-            f()
-        } catch (e: Throwable) {
-            doAutoMute.muteTest(testKey(testCase))
-            throw e
+    if (mutedTest != null && !mutedTest.hasFailFile) {
+        val testKey = testKey(testCase)
+        return {
+            var isTestGreen = true
+            try {
+                f()
+            } catch (e: Throwable) {
+                println("MUTED TEST STILL FAILS: $testKey")
+                isTestGreen = false
+            }
+            if (isTestGreen) {
+                System.err.println("SUCCESS RESULT OF MUTED TEST: $testKey")
+                throw Exception("Muted non-flaky test $testKey finished successfully. Please remove it from csv file")
+            }
+        }
+    } else {
+        val doAutoMute = DO_AUTO_MUTE ?: return null
+        return {
+            try {
+                f()
+            } catch (e: Throwable) {
+                doAutoMute.muteTest(testKey(testCase))
+                throw e
+            }
         }
     }
+
+
 }
 
 private fun mutedMessage(key: String) = "MUTED TEST: $key"
@@ -291,26 +311,4 @@ fun isIgnoredInDatabaseWithLog(testCase: TestCase): Boolean {
 
 fun TestCase.runTest(test: () -> Unit) {
     (wrapWithMuteInDatabase(this, test) ?: test).invoke()
-}
-
-@Throws(Exception::class)
-fun testWithMuteInDatabase(test: KotlinTestUtils.DoTest, testCase: TestCase): KotlinTestUtils.DoTest {
-    return object : KotlinTestUtils.DoTest {
-        override fun invoke(filePath: String) {
-            val mutedTest = getMutedTestOrNull(testCase)
-            if (mutedTest != null && !mutedTest.hasFailFile) {
-                val testKey = testKey(testCase)
-                try {
-                    test.invoke(filePath)
-                } catch (e: Throwable) {
-                    println("MUTED TEST STILL FAILS: $testKey")
-                    return
-                }
-                System.err.println("SUCCESS RESULT OF MUTED TEST: $testKey")
-                throw Exception("Muted non-flaky test $testKey finished successfully. Please remove it from csv file")
-            } else {
-                testWithMuteInFile(test, testCase).invoke(filePath)
-            }
-        }
-    }
 }
