@@ -756,27 +756,25 @@ public class KotlinTestUtils {
     }
 
     private static void runTestImpl(@NotNull DoTest test, @Nullable TestCase testCase, String testDataFilePath) throws Exception {
-        if (testCase == null || isRunTestAlreadyCalled(testCase)) {
-            MuteWithFileKt.testWithMuteInFile(test, "").invoke(testDataFilePath);
-            return;
-        }
-        Function0<Unit> wrapWithMuteInDatabase = MuteWithDatabaseKt.wrapWithMuteInDatabase(testCase, () -> {
-            try {
-                test.invoke(testDataFilePath);
+        if (testCase != null && !isRunTestOverridden(testCase)) {
+            Function0<Unit> wrapWithMuteInDatabase = MuteWithDatabaseKt.wrapWithMuteInDatabase(testCase, () -> {
+                try {
+                    test.invoke(testDataFilePath);
+                }
+                catch (Exception e) {
+                    throw new IllegalStateException(e);
+                }
+                return null;
+            });
+            if (wrapWithMuteInDatabase != null) {
+                wrapWithMuteInDatabase.invoke();
+                return;
             }
-            catch (Exception e) {
-                throw new IllegalStateException(e);
-            }
-            return null;
-        });
-        if (wrapWithMuteInDatabase != null) {
-            wrapWithMuteInDatabase.invoke();
-            return;
         }
         MuteWithFileKt.testWithMuteInFile(test, testCase).invoke(testDataFilePath);
     }
 
-    private static boolean isRunTestAlreadyCalled(TestCase testCase) {
+    private static boolean isRunTestOverridden(TestCase testCase) {
         Class<?> type = testCase.getClass();
         while (type != null) {
             for (Annotation annotation : type.getDeclaredAnnotations()) {
