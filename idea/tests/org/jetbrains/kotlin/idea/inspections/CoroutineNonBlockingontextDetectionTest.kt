@@ -11,11 +11,8 @@ import org.jetbrains.kotlin.idea.test.KotlinLightCodeInsightFixtureTestCase
 import org.jetbrains.kotlin.idea.test.KotlinWithJdkAndRuntimeLightProjectDescriptor
 import org.jetbrains.kotlin.idea.test.PluginTestCaseBase
 import org.jetbrains.kotlin.test.JUnit3WithIdeaConfigurationRunner
-import org.jetbrains.kotlin.test.WithMutedInDatabaseRunTest
-import org.jetbrains.kotlin.test.runTest
 import org.junit.runner.RunWith
 
-@WithMutedInDatabaseRunTest
 @RunWith(JUnit3WithIdeaConfigurationRunner::class)
 class CoroutineNonBlockingContextDetectionTest : KotlinLightCodeInsightFixtureTestCase() {
     override fun getTestDataPath(): String = PluginTestCaseBase.getTestDataPathBase() + "/inspections/blockingCallsDetection"
@@ -49,9 +46,7 @@ class CoroutineNonBlockingContextDetectionTest : KotlinLightCodeInsightFixtureTe
     }
 
     private fun doTest(fileName: String) {
-        runTest {
-            myFixture.configureByFile(fileName)
-            myFixture.testHighlighting(true, false, false, fileName)
-        }
+        myFixture.configureByFile(fileName)
+        myFixture.testHighlighting(true, false, false, fileName)
     }
 }
