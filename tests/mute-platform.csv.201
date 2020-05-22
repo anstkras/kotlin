@@ -51,7 +51,6 @@ org.jetbrains.kotlin.idea.codeInsight.surroundWith.SurroundWithTestGenerated.If.
 org.jetbrains.kotlin.idea.codeInsight.surroundWith.SurroundWithTestGenerated.If.MoveDeclarationsOut.Order.testValAndClass,,, FLAKY
 org.jetbrains.kotlin.idea.codeInsight.surroundWith.SurroundWithTestGenerated.If.MoveDeclarationsOut.Order.testValOrder,,, FLAKY
 org.jetbrains.kotlin.idea.codeInsight.surroundWith.SurroundWithTestGenerated.If.MoveDeclarationsOut.Val.testValWithTypeWoInitializer,,, FLAKY
-org.jetbrains.kotlin.idea.codeInsight.surroundWith.SurroundWithTestGenerated.If.MoveDeclarationsOut.Var.testVarWithTypeWoInitializer, Unprocessed,,
 org.jetbrains.kotlin.idea.completion.test.JvmBasicCompletionTestGenerated.Common.StaticMembers.testJavaStaticMethodsFromImports, KT-32919,,
 org.jetbrains.kotlin.idea.completion.test.JvmBasicCompletionTestGenerated.Java.BoldOrGrayed.testNonPredictableSmartCast1, KT-32919,,
 org.jetbrains.kotlin.idea.completion.test.JvmBasicCompletionTestGenerated.Java.BoldOrGrayed.testNonPredictableSmartCast2, KT-32919,,
