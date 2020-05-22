@@ -20,7 +20,7 @@ import com.intellij.openapi.util.io.FileUtil
 import org.jetbrains.kotlin.codegen.forTestCompile.ForTestCompileRuntime
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 import org.jetbrains.kotlin.config.LanguageVersion
-import org.jetbrains.kotlin.test.isIgnoredInDatabaseWithLog
+import org.jetbrains.kotlin.test.runTest
 import org.jetbrains.kotlin.test.testFramework.KtUsefulTestCase
 import org.jetbrains.kotlin.utils.addIfNotNull
 import org.junit.Assert
@@ -143,7 +143,7 @@ class KotlinVersionsTest : KtUsefulTestCase() {
 
     private fun Collection<Any>.areEqual(): Boolean = all(first()::equals)
 
-    override fun shouldRunTest(): Boolean {
-        return super.shouldRunTest() && !isIgnoredInDatabaseWithLog(this)
+    override fun runTest() {
+        runTest { super.runTest() }
     }
 }
