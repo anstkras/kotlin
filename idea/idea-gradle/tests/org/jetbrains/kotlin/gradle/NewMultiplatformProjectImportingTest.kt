@@ -255,7 +255,7 @@ class NewMultiplatformProjectImportingTest : MultiplePluginVersionGradleImportin
     }
 
     @Test
-    @PluginTargetVersions(gradleVersion = "4.0+", pluginVersion = "1.3.30+")
+    @PluginTargetVersions(gradleVersion = "5.2+", pluginVersion = "1.3.30+")
     fun testAndroidDependencyOnMPP() {
         configureByFiles()
         createProjectSubFile(
@@ -267,7 +267,7 @@ class NewMultiplatformProjectImportingTest : MultiplePluginVersionGradleImportin
         checkProjectStructure {
             module("project")
             module("app") {
-                libraryDependency("Gradle: android-android-26", DependencyScope.COMPILE)
+                //libraryDependency("Gradle: android-android-28", DependencyScope.COMPILE)
                 libraryDependency("Gradle: android.arch.core:common:1.1.0@jar", DependencyScope.COMPILE)
                 libraryDependency("Gradle: android.arch.core:runtime:1.1.0@aar", DependencyScope.COMPILE)
                 libraryDependency("Gradle: android.arch.lifecycle:common:1.1.0@jar", DependencyScope.COMPILE)
@@ -613,7 +613,7 @@ class NewMultiplatformProjectImportingTest : MultiplePluginVersionGradleImportin
     }
 
     @Test
-    @PluginTargetVersions(gradleVersion = "4.0+", pluginVersion = "1.3.20+")
+    @PluginTargetVersions(gradleVersion = "5.0+", pluginVersion = "1.3.20+")
     fun testDetectAndroidSources() {
         configureByFiles()
         createProjectSubFile(
