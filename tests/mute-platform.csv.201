@@ -138,6 +138,7 @@ org.jetbrains.kotlin.idea.intentions.declarations.JoinLinesTestGenerated.RemoveB
 org.jetbrains.kotlin.idea.intentions.declarations.JoinLinesTestGenerated.RemoveBraces.testIf, KT-34408,,
 org.jetbrains.kotlin.idea.intentions.declarations.JoinLinesTestGenerated.RemoveBraces.testNotSingleLineStatement, KT-34408,,
 org.jetbrains.kotlin.idea.intentions.declarations.JoinLinesTestGenerated.RemoveBraces.testWhenEntry, KT-34408,,
+org.jetbrains.kotlin.idea.intentions.IntentionTestGenerated.ConvertSealedClassToEnum.testWithNonObjectInheritors,,,
 org.jetbrains.kotlin.idea.navigation.KotlinGotoImplementationMultiModuleTestGenerated.testExpectClassSuperclassFun,,, FLAKY
 org.jetbrains.kotlin.idea.parameterInfo.ParameterInfoTestGenerated.WithLib1.testUseJavaFromLib, KT-34542, FAIL,
 org.jetbrains.kotlin.idea.parameterInfo.ParameterInfoTestGenerated.WithLib2.testUseJavaSAMFromLib, KT-34542, FAIL,
@@ -167,7 +168,7 @@ org.jetbrains.kotlin.idea.refactoring.inline.InlineTestGenerated.Function.Expres
 org.jetbrains.kotlin.idea.refactoring.introduce.ExtractionTestGenerated.IntroduceJavaParameter.testJavaMethodOverridingKotlinFunctionWithUsages, Unprocessed,,
 org.jetbrains.kotlin.idea.refactoring.move.MoveTestGenerated.testJava_moveClass_moveInnerToTop_moveNestedClassToTopLevelInTheSamePackageAndAddOuterInstanceWithLambda_MoveNestedClassToTopLevelInTheSamePackageAndAddOuterInstanceWithLambda, final modifier added,,
 org.jetbrains.kotlin.idea.refactoring.move.MoveTestGenerated.testJava_moveClass_moveInnerToTop_moveNestedClassToTopLevelInTheSamePackageAndAddOuterInstance_MoveNestedClassToTopLevelInTheSamePackageAndAddOuterInstance, final modifier added,,
-org.jetbrains.kotlin.idea.refactoring.move.MoveTestGenerated.testKotlin_moveTopLevelDeclarations_moveFunctionToPackage_MoveFunctionToPackage, Broken in 0dc7c37b62f0cfdfb57ee41a808137196c45a9f5,,
+org.jetbrains.kotlin.idea.refactoring.rename.RenameTestGenerated.testOverloadsWithSameOrigin_OverloadsWithSameOrigin, Bad imports after rename,,
 org.jetbrains.kotlin.idea.refactoring.suggested.KotlinSuggestedRefactoringChangeListenerTest.test1, Additional signature,,
 org.jetbrains.kotlin.idea.refactoring.suggested.KotlinSuggestedRefactoringChangeListenerTest.testAddImport, Additional signature,,
 org.jetbrains.kotlin.idea.refactoring.suggested.KotlinSuggestedRefactoringChangeListenerTest.testAddImportWithBlankLineInsertion, Additional signature,,
