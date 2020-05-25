@@ -214,3 +214,5 @@ org.jetbrains.kotlin.idea.spring.tests.rename.SpringRenameTestGenerated.testProp
 org.jetbrains.kotlin.idea.spring.tests.rename.SpringRenameTestGenerated.testPropertyWithXmlRefsBySpelRef_PropertyWithXmlRefBySpelRef, Rename failed in Spring,,
 org.jetbrains.kotlin.jps.build.IncrementalConstantSearchTest.testJavaConstantChangedUsedInKotlin, Incremental compilation in 201,,
 org.jetbrains.kotlin.jps.build.IncrementalJvmJpsTestGenerated.WithJava.JavaUsedInKotlin.testConstantChanged, Incremental compilation in 201,,
+org.jetbrains.kotlin.idea.codeInsight.surroundWith.SurroundWithTestGenerated.If.MoveDeclarationsOut.Var.testVarWithTypeWoInitializer, Unprocessed,, FLAKY
+org.jetbrains.kotlin.idea.refactoring.pullUp.PullUpTestGenerated.K2K.testAccidentalOverrides, Unprocessed,, FLAKY
