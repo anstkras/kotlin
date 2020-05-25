@@ -8,7 +8,8 @@ package org.jetbrains.kotlin.fir
 import com.intellij.openapi.util.text.StringUtil
 import junit.framework.TestCase
 import org.jetbrains.kotlin.checkers.BaseDiagnosticsTest.Companion.DIAGNOSTIC_IN_TESTDATA_PATTERN
-import org.jetbrains.kotlin.checkers.BaseDiagnosticsTest.Companion.SPEC_LINKS_IN_TESTDATA_PATTERN
+import org.jetbrains.kotlin.checkers.BaseDiagnosticsTest.Companion.SPEC_LINKED_TESTDATA_PATTERN
+import org.jetbrains.kotlin.checkers.BaseDiagnosticsTest.Companion.SPEC_NOT_LINED_TESTDATA_PATTERN
 import org.jetbrains.kotlin.test.KotlinTestUtils
 import org.jetbrains.kotlin.test.util.trimTrailingWhitespacesAndAddNewlineAtEOF
 import java.io.File
@@ -51,9 +52,16 @@ fun compareAndMergeFirFileAndOldFrontendFile(
     }
 }
 
+fun loadTestDataWithDiagnostics(file: File): String {
+    val textWithoutDiagnostics = KotlinTestUtils.doLoadFile(file)
+        .replace(SPEC_LINKED_TESTDATA_PATTERN, "")
+        .replace(SPEC_NOT_LINED_TESTDATA_PATTERN, "")
+    return StringUtil.convertLineSeparators(textWithoutDiagnostics.trim()).trimTrailingWhitespacesAndAddNewlineAtEOF()
+}
+
 fun loadTestDataWithoutDiagnostics(file: File): String {
     val textWithoutDiagnostics = KotlinTestUtils.doLoadFile(file)
         .replace(DIAGNOSTIC_IN_TESTDATA_PATTERN, "")
-        .replace(SPEC_LINKS_IN_TESTDATA_PATTERN, "")
+        .replace(SPEC_LINKED_TESTDATA_PATTERN, "")
     return StringUtil.convertLineSeparators(textWithoutDiagnostics.trim()).trimTrailingWhitespacesAndAddNewlineAtEOF()
 }
